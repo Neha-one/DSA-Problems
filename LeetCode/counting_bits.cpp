@@ -18,21 +18,22 @@ int main()
 
     for (int i = 0; i <= n; i++)
     {
-
         int rem;
         int x = i;
         int count = 0;
+
         while (x != 0)
         {
 
-            // rem = x % 2;
-            // if (rem == 1)
-            // {
-            //     count++;
-            // }
+            rem = x % 2;
+            if (rem == 1)
+            {
+                count++;
+            }
 
             // OR : printig of count in 2nd method:
-            count += x % 2;
+            // count += x % 2;
+
             x /= 2;
         }
         cout << count << " ";
