@@ -19,7 +19,7 @@ int main()
         i++;
     }
     if (flag)
-        cout << "yes";
+        cout << "yes! the given number is Power of Two.";
     else
-        cout << "no";
+        cout << "no! yes the given number is not Power of Two.";
 }
