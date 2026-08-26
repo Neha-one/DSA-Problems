@@ -2,26 +2,43 @@
 #include <vector>
 using namespace std;
 
-vector<int> merge(vector<int> v1, int n, vector<int> v2, int m)
+void mergeSortedArray(vector<int> &arr1, int n, vector<int> &arr2, int m)
 {
-  int i = m + n, j = 0;
-  while (i < n && j < m)
+  int i = n - 1;
+  int j = m - 1;
+  int k = n + m - 1;
+
+  while (i >= 0 && j >= 0)
   {
-    if (v1[i] > v2[j])
+    if (arr1[i] > arr2[j])
     {
-      v1[i] = v2[j];
+      arr1[k--] = arr1[i--];
+    }
+    else
+    {
+      arr1[k--] = arr2[j--];
     }
   }
-  while (j < n)
+  while (j >= 0)
   {
+    arr1[k--] = arr2[j--];
+  }
+}
+
+void print(vector<int>arr)
+{
+  for (int i = 0; i < arr.size();i++){
+    cout << arr[i] << " ";
   }
 }
 
 int main()
 {
-  vector<int> v1 = {1, 2, 3, 0, 0, 0};
-  vector<int> v2 = {2, 5, 6};
+  vector<int> arr1 = {2, 5, 7, 0, 0, 0};
+  vector<int> arr2 = {3, 4, 6};
 
-  merge(v1, 6, v2, 3);
+mergeSortedArray(arr1, 3, arr2, 3);
+  print(arr1);
+
   return 0;
 }
