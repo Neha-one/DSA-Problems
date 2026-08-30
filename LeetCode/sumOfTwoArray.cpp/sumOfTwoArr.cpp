@@ -2,7 +2,7 @@
 #include <vector>
 #include <algorithm>
 using namespace std;
-void SumOfArr(vector<int>& arr1, int n, vector<int>& arr2, int m, vector<int> &arr3)
+void SumOfArr(vector<int> &arr1, int n, vector<int> &arr2, int m, vector<int> &ans)
 {
   int carry = 0;
   int i = n - 1;
@@ -10,43 +10,43 @@ void SumOfArr(vector<int>& arr1, int n, vector<int>& arr2, int m, vector<int> &a
   while (i >= 0 && j >= 0)
   {
 
-    int key = arr1[i] + arr2[j] + carry;
-    int digit = key % 10;
-    arr3.push_back(digit);
-    carry = key / 10;
+    int sum = arr1[i] + arr2[j] + carry;
+    int digit = sum % 10;
+    ans.push_back(digit);
+    carry = sum / 10;
 
     i--;
     j--;
   }
-  while ( i >= 0)
+  while (i >= 0)
 
   {
-    int key = arr1[i] + carry;
-    int digit = key % 10;
-    arr3.push_back(digit);
-    carry = key / 10;
+    int sum = arr1[i] + carry;
+    int digit = sum % 10;
+    ans.push_back(digit);
+    carry = sum / 10;
     i--;
   }
-  while ( j >= 0)
+  while (j >= 0)
 
   {
-    int key = arr2[j] + carry;
-    int digit = key % 10;
-    arr3.push_back(digit);
-    carry = key / 10;
+    int sum = arr2[j] + carry;
+    int digit = sum % 10;
+    ans.push_back(digit);
+    carry = sum / 10;
     j--;
   }
   if (carry != 0)
   {
-    arr3.push_back(carry);
+    ans.push_back(carry);
   }
-  reverse(arr3.begin(), arr3.end());
+  reverse(ans.begin(), ans.end());
 }
-void print(vector<int> arr3)
+void print(vector<int> ans)
 {
-  for (int i = 0; i < arr3.size(); i++)
+  for (int i = 0; i < ans.size(); i++)
   {
-    cout << arr3[i] << " ";
+    cout << ans[i] << " ";
   }
 }
 int main()
@@ -55,9 +55,9 @@ int main()
   vector<int> arr2 = {3, 4, 7};
   int n = arr1.size();
   int m = arr2.size();
-  vector<int> arr3;
+  vector<int> ans;
 
-  SumOfArr(arr1, n, arr2, m, arr3);
-  print(arr3);
+  SumOfArr(arr1, n, arr2, m, ans);
+  print(ans);
   return 0;
 }
